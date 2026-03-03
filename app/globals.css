@@ -1,0 +1,280 @@
+@import "tailwindcss";
+
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+  --font-manrope: "Manrope", ui-sans-serif, system-ui, sans-serif;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-family-sans: var(--font-manrope), ui-sans-serif, system-ui, sans-serif;
+  --font-Inter: "Inter", sans-serif;
+  --color-gray-1000: #4C4C4C;
+  --color-gray-1100: #DFDFDF;
+  --color-gray-1200: #5E5E5E;
+  --color-black-1000: #0B252A;
+  --color-black-1100: #272C2C;
+  --color-black-1200: #140A09;
+  --color-white-1000: #FFF9F9;
+  --color-yellow-1000: #EBF367;
+  --color-yellow-1100: #D8F999;
+  --drop-shadow-3xl: -30px 34px 174px rgba(0, 0, 0, 0.25);
+
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+  }
+}
+
+html {
+  overflow-x: hidden;
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-manrope), ui-sans-serif, system-ui, sans-serif;
+  overflow-x: hidden;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+.animate-fade-up {
+  animation: fadeUp 0.8s ease-out both;
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.6s ease-out both;
+}
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.animate-scale {
+  animation: scaleIn 0.8s ease-out both;
+}
+
+/* Scroll-driven animation utilities */
+.scroll-fade-up {
+  animation: fadeUp 1s ease-out both;
+  animation-timeline: view();
+  animation-range: entry 0% entry 40%;
+}
+
+.scroll-fade-in {
+  animation: fadeIn 1s ease-out both;
+  animation-timeline: view();
+  animation-range: entry 0% entry 40%;
+}
+
+.scroll-scale {
+  animation: scaleIn 1s ease-out both;
+  animation-timeline: view();
+  animation-range: entry 0% entry 40%;
+}
+
+/* Delay variants for staggered scroll animations */
+.scroll-delay-1 {
+  animation-range: entry 5% entry 45%;
+}
+
+.scroll-delay-2 {
+  animation-range: entry 10% entry 50%;
+}
+
+.scroll-delay-3 {
+  animation-range: entry 15% entry 55%;
+}
+
+/* Fallback for browsers without scroll-driven animation support */
+@supports not (animation-timeline: view()) {
+
+  .scroll-fade-up,
+  .scroll-fade-in,
+  .scroll-scale {
+    animation-timeline: auto;
+    animation-range: normal;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+  .animate-fade-up,
+  .animate-fade-in,
+  .animate-scale,
+  .animate-scroll-left,
+  .animate-scroll-right,
+  .scroll-fade-up,
+  .scroll-fade-in,
+  .scroll-scale {
+    animation: none;
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+@keyframes scroll-left {
+  0% {
+    transform: translateX(0);
+  }
+
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes scroll-right {
+  0% {
+    transform: translateX(-50%);
+  }
+
+  100% {
+    transform: translateX(0);
+  }
+}
+
+.animate-scroll-left {
+  animation: scroll-left 20s linear infinite;
+  will-change: transform;
+}
+
+.animate-scroll-right {
+  animation: scroll-right 20s linear infinite;
+  will-change: transform;
+}
+
+.blog-prose h2 {
+  color: #ffffff;
+  font-size: 2rem;
+  font-weight: 700;
+  margin-top: 2.5rem;
+  margin-bottom: 1rem;
+}
+
+.blog-prose h3 {
+  color: #ffffff;
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-top: 2rem;
+  margin-bottom: 0.75rem;
+}
+
+.blog-prose p {
+  margin-bottom: 1.5rem;
+  line-height: 1.8;
+}
+
+.blog-prose ul {
+  margin: 1.5rem 0;
+  padding-left: 1.5rem;
+}
+
+.blog-prose li {
+  margin-bottom: 0.5rem;
+}
+
+.blog-prose strong {
+  color: #00ffaa;
+  font-weight: 600;
+}
+
+.blog-prose a {
+  color: #00ffaa;
+  text-decoration: underline;
+}
+
+.blog-prose a:hover {
+  color: #00dd99;
+}
+
+.text-gradient {
+  background: linear-gradient(90deg, #0B252A 0%, #6259B9 100%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.card-bg {
+  background: linear-gradient(180deg, #D8F999 0%, #272C2C 100%);
+}
+
+.card-bg2 {
+  background: linear-gradient(270deg, #D9D9D9 0%, rgba(217, 217, 217, 0.00) 100%);
+
+}
+
+.swiper-pagination-fraction,
+.swiper-pagination-custom,
+.swiper-horizontal>.swiper-pagination-bullets,
+.swiper-pagination-bullets.swiper-pagination-horizontal {
+  width: fit-content !important;
+  left: 30px !important;
+  bottom: auto !important;
+  top: 39px !important;
+
+}
+
+.swiper {
+  position: static !important;
+}
+
+.swiper-pagination-bullet {
+  width: 12px !important;
+  height: 12px !important;
+  border-radius: 12px !important;
+  background: #000 !important;
+}
+
+.card-bg4 {
+  background: linear-gradient(180deg, rgb(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.10) 100%);
+  backdrop-filter: blur(2.6666667461395264px);
+}
+
+.footer-card-bg {
+  background: linear-gradient(104deg, rgba(0, 0, 0, 0.20) 13.59%, rgba(0, 0, 0, 0.10) 84.8%);
+
+}
